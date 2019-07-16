@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms";
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { AngularStickyThingsModule } from "@w11k/angular-sticky-things";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularStickyThingsModule } from '@w11k/angular-sticky-things';
 
 import { ExpressionValidatorDirective } from './validators/expression-validator/expression-validator.directive';
 import { CheckboxComponent } from './basic-components/checkbox/checkbox.component';
@@ -20,11 +21,11 @@ import { DynamicComponentComponent } from './dynamic-component/dynamic-component
 import { ElectricVehicleComponent } from './complex-components/electric-vehicle/electric-vehicle.component';
 import { ParagraphGroupComponent } from './basic-components/paragraph-group/paragraph-group.component';
 import { MotorEfficiencyComponent } from './complex-components/motor-efficiency/motor-efficiency.component';
-import { AppRoutingModule } from "./app-routing.module";
+import { AppRoutingModule } from './app-routing.module';
 import { TableOfContentsComponent } from './basic-components/table-of-contents/table-of-contents.component';
 import { ScrollSpyDirective } from './directives/scroll-spy/scroll-spy.directive';
 import { SvgComponent } from './basic-components/svg/svg.component';
-import { TableOfContentsGroupComponent } from "./basic-components/table-of-contents/table-of-contents-group.component";
+import { TableOfContentsGroupComponent } from './basic-components/table-of-contents/table-of-contents-group.component';
 import { AlertComponent } from './alert/alert.component';
 import { MotorSizingComponent } from './complex-components/motor-sizing/motor-sizing.component';
 import { VehicleComponent } from './complex-components/vehicle/vehicle.component';
@@ -33,18 +34,20 @@ import { StaticAccelPointsComponent } from './complex-components/static-accel-po
 import { DataTableComponent } from './basic-components/data-table/data-table.component';
 import { HeatmapComponent } from './basic-components/heatmap/heatmap.component';
 import { PointConditionComponent } from './basic-components/point-condition/point-condition.component';
-import { PointConditionModalComponent } from "./basic-components/point-condition/point-condition-modal.component";
+import { PointConditionModalComponent } from './basic-components/point-condition/point-condition-modal.component';
 import { SwitchComponent } from './basic-components/switch/switch.component';
 import { ExamplesComponent } from './pages/examples/examples.component';
 import { AccelerationConditionComponent } from './basic-components/acceleration-condition/acceleration-condition.component';
 import { AccelerationConditionModalComponent } from './basic-components/acceleration-condition/acceleration-condition-modal.component';
-import { ExportModalComponent } from "./services/exporter/export-modal.component";
+import { ExportModalComponent } from './services/exporter/export-modal.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { DropdownComponent } from './basic-components/dropdown/dropdown.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthenticationService } from './authentication.service';
+import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -93,16 +96,20 @@ import { ProfileComponent } from './profile/profile.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    AngularStickyThingsModule
+    AngularStickyThingsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     ParagraphComponent,
     MotorEfficiencyComponent,
     PointConditionModalComponent,
     AccelerationConditionModalComponent,
-    ExportModalComponent
+    ExportModalComponent,
   ]
 })
 export class AppModule { }

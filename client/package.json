@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port=4202 --open=true",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -36,7 +36,8 @@
     "javascript-algorithms": "github:mgechev/javascript-algorithms",
     "mathjs": "^5.4.2",
     "ng5-slider": "^1.1.14",
-    "rxjs": "^6.4.0",
+    "rxjs": "^6.5.2",
+    "rxjs-compat": "^6.5.2",
     "zone.js": "^0.8.29"
   },
   "devDependencies": {
